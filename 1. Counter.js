@@ -8,11 +8,20 @@ class App extends React.Component {
 
         this.state = {
             counter: 0,
+            memoizer:[],
             name: 'Pesho'
         }
     }
 
     componentDidMount(){
+        const { counter, memoizer} = this.state;
+
+        if(counter === 5){
+            this.setState({
+                memoizer: [counter, ...memoizer]
+            })
+        }
+        
         setInterval(() => {
             this.setState({
                 counter: this.state.counter + 1
